@@ -26,9 +26,8 @@ class PreNorm(nn.Module):
         return self.fn(self.norm(x), **kwargs)
 
 class FNetBlock(nn.Module):
-  def __init__(self, dim):
+  def __init__(self):
     super().__init__()
-    self.dim =dim
 
   def forward(self, x):
     x = torch.fft.fft(torch.fft.fft(x, dim=-1), dim=-2).real
@@ -40,7 +39,7 @@ class FNet(nn.Module):
         self.layers = nn.ModuleList([])
         for _ in range(depth):
             self.layers.append(nn.ModuleList([
-                PreNorm(dim, FNetBlock(dim)),
+                PreNorm(dim, FNetBlock()),
                 PreNorm(dim, FeedForward(dim, mlp_dim, dropout = dropout))
             ]))
     def forward(self, x):
