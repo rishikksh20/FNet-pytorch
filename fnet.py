@@ -1,8 +1,5 @@
 import torch
-import numpy as np
 from torch import nn
-from einops.layers.torch import Rearrange
-from einops import rearrange, repeat
 
 class FeedForward(nn.Module):
     def __init__(self, dim, hidden_dim, dropout = 0.):
@@ -34,7 +31,7 @@ class FNetBlock(nn.Module):
     return x
 
 class FNet(nn.Module):
-    def __init__(self, dim, depth, heads, dim_head, mlp_dim, dropout = 0.):
+    def __init__(self, dim, depth, mlp_dim, dropout = 0.):
         super().__init__()
         self.layers = nn.ModuleList([])
         for _ in range(depth):

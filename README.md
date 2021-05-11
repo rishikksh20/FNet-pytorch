@@ -1,6 +1,6 @@
 # FNet: Mixing Tokens with Fourier Transforms
 Pytorch implementation of [Fnet : Mixing Tokens with Fourier Transforms](https://arxiv.org/abs/2105.03824v1).
-
+![](model.PNG)
 ## Citation:
 ```
 @misc{leethorp2021fnet,
