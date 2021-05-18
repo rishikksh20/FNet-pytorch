@@ -27,7 +27,7 @@ class FNetBlock(nn.Module):
     super().__init__()
 
   def forward(self, x):
-    x = torch.fft.fft(torch.fft.fft(x, dim=-1), dim=-2).real
+    x = torch.fft.fft2(x).real
     return x
 
 class FNet(nn.Module):
